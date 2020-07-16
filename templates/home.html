@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido | {{ user }}</title>
+</head>
+<body>
+    {% for vacancy in content %}
+    <div>{{ vacancy.author }}: {{ vacancy.description }}</div>
+    {% endfor %}
+    {% if user.is_staff %}
+        <br>
+        <form action="/vacancy/new" method='GET'>{% csrf_token %}
+            <button type="submit">New vacancy</button>
+        </form>
+    {% else %}
+        <br>
+        <form action="/resume/new" method='GET'>{% csrf_token %}
+            <button type="submit">New resume</button>
+        </form>
+    {% endif %}
+</body>
+</html>

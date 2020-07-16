@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New {{ title }}</title>
+</head>
+
+<body>
+    <form method="post">{% csrf_token %}
+        {% if user.is_staff %}
+            <div>{{ form.as_table }}</div>
+            <button type="submit">Send</button>
+        {% else %}
+            <div>{{ form.as_table }}</div>
+            <button type="submit">Send</button>
+        {% endif %}
+    </form>
+</body>
+
+</html>
